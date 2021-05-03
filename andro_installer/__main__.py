@@ -114,10 +114,10 @@ if __name__ == "__main__":
     app = hgit(heroku, repo, appname)
     config = app.config()
 
-    onemli(LANG['WRITING_CONFIG'])
+   onemli(LANG['WRITING_CONFIG'])
 
     config['ANTI_SPAMBOT'] = 'False'
-    config['ANTI_SPAMBOT_SHOUT'] = 'True'
+    config['ANTI_SPAMBOT_SHOUT'] = 'False'
     config['API_HASH'] = ahash
     config['API_KEY'] = str(aid)
     config['BOTLOG'] = "False"
@@ -125,8 +125,7 @@ if __name__ == "__main__":
     config['CLEAN_WELCOME'] = "True"
     config['CONSOLE_LOGGER_VERBOSE'] = "False"
     config['COUNTRY'] = COUNTRY
-    config['DEFAULT_BIO'] = "✨ @AndroUserBot"
-    config['DEFAULT_NAME'] = "Sahip"
+    config['DEFAULT_BIO'] = "@AsenaUserBot"
     config['GALERI_SURE'] = "60"
     config['CHROME_DRIVER'] = "/usr/sbin/chromedriver"
     config['GOOGLE_CHROME_BIN'] = "/usr/sbin/chromium"
@@ -140,7 +139,7 @@ if __name__ == "__main__":
     config['TMP_DOWNLOAD_DIRECTORY'] = "./downloads/"
     config['TZ'] = TZ
     config['TZ_NUMBER'] = "1"
-    config['UPSTREAM_REPO_URL'] = "https://github.com/cancinconnnbot/AndroUserBot"
+    config['UPSTREAM_REPO_URL'] = "https://github.com/Quiec/AsenaUserBot"
     config['WARN_LIMIT'] = "3"
     config['WARN_MODE'] = "gmute"
     config['LANGUAGE'] = LANGUAGE
@@ -162,7 +161,7 @@ if __name__ == "__main__":
     if Sonra == True:
         BotLog = False
         Cevap = ""
-        while not Cevap == "6":
+        while not Cevap == "4":
             if Cevap == "1":
                 bilgi(LANG['OPENING_BOTLOG'])
 
@@ -181,19 +180,8 @@ if __name__ == "__main__":
             elif Cevap == "2":
                 config['OTOMATIK_KATILMA'] = "False"
                 basarili(LANG['SUCCESS_SUP'])
-            elif Cevap == "4":
-                config['PM_AUTO_BAN'] = "True"
-                basarili(LANG['SUCCESS_PMAUTO'])
-            elif Cevap == "5":
-                whatisyourname = str(soru(LANG['WHAT_IS_YOUR_NAME']))
-                config['DEFAULT_NAME'] = whatisyourname
-                basarili(LANG['SUCCESS_DEFAULTNAME'])
-
-                
-
-
             
-            bilgi(f"[1] {LANG['BOTLOG']}\n[2] {LANG['NO_SUP']}\n[3] {LANG['NO_LOG']}\n[4] {LANG['NO_PMAUTO']}\n[5] {LANG['NO_DEFAULTNAME']}\n[6] {LANG['CLOSE']}")
+            bilgi(f"\[1] {LANG['BOTLOG']}\n\[2] {LANG['NO_SUP']}\n\[3] {LANG['NO_LOG']}\n\[4] {LANG['CLOSE']}")
             
-            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3", "4", "5", "6"], default="6")
-        basarili(LANG['SEEYOU'])
+            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3", "4"], default="4")
+        basarili("Görüşürüz!")
