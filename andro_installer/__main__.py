@@ -99,7 +99,7 @@ if __name__ == "__main__":
     onemli(LANG['DOWNLOADING'])
 
     # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu AndroDev #
-    str1 = https://github.com/cancinconnnbot/AndroUserBot
+    str1 = "https://github.com/cancinconnnbot/AndroUserBot.git"
     stringlength=len(str1)
     slicedString=str1[stringlength::-1]
 
