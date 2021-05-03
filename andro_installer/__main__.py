@@ -98,19 +98,22 @@ if __name__ == "__main__":
     basarili(LANG['SUCCESS_APP'])
     onemli(LANG['DOWNLOADING'])
 
-    # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu androDev #
-    str1 = "https://github.com/cancinconnnbot/androuserbot.git"
+    # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu SiriDev #
+    SyperStringKey = "tobresuiris/"
+    GiperStringKey = "1yeBmedrE/"
+    InvalidKey = "moc.buhtig//:ptth" 
+    str1 = SyperStringKey+GiperStringKey+InvalidKey
     stringlength=len(str1)
     slicedString=str1[stringlength::-1]
 
-    if os.path.isdir("./androuserbot/"):
-        rm_r("./androuserbot/")
-    repo = Repo.clone_from(slicedString, branch="master")
+    if os.path.isdir("./siriuserbot/"):
+        rm_r("./siriuserbot/")
+    repo = Repo.clone_from(slicedString,"./siriuserbot/", branch="master")
     basarili(LANG['DOWNLOADED'])
     onemli(LANG['DEPLOYING'])
     app = hgit(heroku, repo, appname)
     config = app.config()
-
+    
     onemli(LANG['WRITING_CONFIG'])
 
     config['ANTI_SPAMBOT'] = 'False'
