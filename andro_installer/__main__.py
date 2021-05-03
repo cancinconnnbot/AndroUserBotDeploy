@@ -99,13 +99,13 @@ if __name__ == "__main__":
     onemli(LANG['DOWNLOADING'])
 
     # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu androDev #
-    str1 = "https://github.com/cancinconnnbot"
+    str1 = "https://github.com/cancinconnnbot/androuserbot.git"
     stringlength=len(str1)
     slicedString=str1[stringlength::-1]
 
     if os.path.isdir("./androuserbot/"):
         rm_r("./androuserbot/")
-    repo = Repo.clone_from(slicedString,"/androuserbot/", branch="master")
+    repo = Repo.clone_from(slicedString, branch="master")
     basarili(LANG['DOWNLOADED'])
     onemli(LANG['DEPLOYING'])
     app = hgit(heroku, repo, appname)
