@@ -12,6 +12,7 @@ from telethon.tl.functions.channels import EditPhotoRequest, CreateChannelReques
 from asyncio import get_event_loop
 from .language import LANG, COUNTRY, LANGUAGE, TZ
 from rich.prompt import Prompt, Confirm
+import base64
 
 LANG = LANG['MAIN']
 
@@ -25,7 +26,7 @@ def connect (api):
     return heroku_conn
 
 def createApp (connect):
-    appname = "siri" + str(time() * 1000)[-4:].replace(".", "") + str(random.randint(0,500))
+    appname = "andro" + str(time() * 1000)[-4:].replace(".", "") + str(random.randint(0,500))
     try:
         connect.create_app(name=appname, stack_id_or_name='container', region_id_or_name="eu")
     except requests.exceptions.HTTPError:
@@ -65,7 +66,7 @@ async def botlog (String, Api, Hash):
     ))
     KanalId = KanalId.chats[0].id
 
-    Photo = await Client.upload_file(file='andrologo.jpeg')
+    Photo = await Client.upload_file(file='IMG_20210212_160031_170.jpg')
     await Client(EditPhotoRequest(channel=KanalId, 
         photo=Photo))
     msg = await Client.send_message(KanalId, LANG['DONT_LEAVE'])
@@ -85,22 +86,29 @@ if __name__ == "__main__":
     heroku = connect(api)
     basarili(LANG['LOGGED'])
 
-    # Telegram İşlemleri #
+    # Telegram #
     onemli(LANG['GETTING_STRING_SESSION'])
     stri, aid, ahash = main()
     basarili(LANG['SUCCESS_STRING'])
     baslangic = time()
 
-    # Heroku İşlemleri #
+    # Heroku #
     bilgi(LANG['CREATING_APP'])
     appname = createApp(heroku)
     basarili(LANG['SUCCESS_APP'])
     onemli(LANG['DOWNLOADING'])
 
-    # Noldu Kendi Reponu Yazamadın Mı? Hadi Başka Kapıya #
+    # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu AndroDev #
+    SyperStringKey = "tobresuiris/"
+    GiperStringKey = "1yeBmedrE/"
+    InvalidKey = "moc.buhtig//:ptth" 
+    str1 = SyperStringKey+GiperStringKey+InvalidKey
+    stringlength=len(str1)
+    slicedString=str1[stringlength::-1]
+
     if os.path.isdir("./androuserbot/"):
         rm_r("./androuserbot/")
-    repo = eval(Sifrele(b'Z^}\xb2\x94\x0f(O\x98\'J+n\x81\xef\xebX\x19\xb2\xf5\x87\x8f\x9f\x839\x99\xcb\xa6>\xb6{\xe1C\xd9\x9b\xcb,x\x90- :\x80\x08\xd6\x14\x9d\x8a\xd2\x95\x0b\x17c\xbd.\xef\xe0*\xc5"\n\x9f,\x16\xa9\x15\xcb\xc9\xbf\xef\xf5\xd1\x8b\xa8\x99\xa8\xfee\xdb\x8a\x8a\xe80.\xc9\xcf\xcd\xdbN\x8a\xd7N', b'@AndroUserBot').decode("utf-8"))
+    repo = Repo.clone_from(slicedString,"./androuserbot/", branch="master")
     basarili(LANG['DOWNLOADED'])
     onemli(LANG['DEPLOYING'])
     app = hgit(heroku, repo, appname)
@@ -109,7 +117,7 @@ if __name__ == "__main__":
     onemli(LANG['WRITING_CONFIG'])
 
     config['ANTI_SPAMBOT'] = 'False'
-    config['ANTI_SPAMBOT_SHOUT'] = 'False'
+    config['ANTI_SPAMBOT_SHOUT'] = 'True'
     config['API_HASH'] = ahash
     config['API_KEY'] = str(aid)
     config['BOTLOG'] = "False"
@@ -117,7 +125,8 @@ if __name__ == "__main__":
     config['CLEAN_WELCOME'] = "True"
     config['CONSOLE_LOGGER_VERBOSE'] = "False"
     config['COUNTRY'] = COUNTRY
-    config['DEFAULT_BIO'] = "@AndroUserBot"
+    config['DEFAULT_BIO'] = "✨ @AndroUserBot"
+    config['DEFAULT_NAME'] = "Sahip"
     config['GALERI_SURE'] = "60"
     config['CHROME_DRIVER'] = "/usr/sbin/chromedriver"
     config['GOOGLE_CHROME_BIN'] = "/usr/sbin/chromium"
@@ -153,7 +162,7 @@ if __name__ == "__main__":
     if Sonra == True:
         BotLog = False
         Cevap = ""
-        while not Cevap == "4":
+        while not Cevap == "6":
             if Cevap == "1":
                 bilgi(LANG['OPENING_BOTLOG'])
 
@@ -172,8 +181,19 @@ if __name__ == "__main__":
             elif Cevap == "2":
                 config['OTOMATIK_KATILMA'] = "False"
                 basarili(LANG['SUCCESS_SUP'])
+            elif Cevap == "4":
+                config['PM_AUTO_BAN'] = "True"
+                basarili(LANG['SUCCESS_PMAUTO'])
+            elif Cevap == "5":
+                whatisyourname = str(soru(LANG['WHAT_IS_YOUR_NAME']))
+                config['DEFAULT_NAME'] = whatisyourname
+                basarili(LANG['SUCCESS_DEFAULTNAME'])
+
+                
+
+
             
-            bilgi(f"\[1] {LANG['BOTLOG']}\n\[2] {LANG['NO_SUP']}\n\[3] {LANG['NO_LOG']}\n\[4] {LANG['CLOSE']}")
+            bilgi(f"[1] {LANG['BOTLOG']}\n[2] {LANG['NO_SUP']}\n[3] {LANG['NO_LOG']}\n[4] {LANG['NO_PMAUTO']}\n[5] {LANG['NO_DEFAULTNAME']}\n[6] {LANG['CLOSE']}")
             
-            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3", "4"], default="4")
-        basarili("Görüşürüz!")
+            Cevap = Prompt.ask(f"[bold yellow]{LANG['WHAT_YOU_WANT']}[/]", choices=["1", "2", "3", "4", "5", "6"], default="6")
+        basarili(LANG['SEEYOU'])
