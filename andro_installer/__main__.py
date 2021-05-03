@@ -98,7 +98,7 @@ if __name__ == "__main__":
     basarili(LANG['SUCCESS_APP'])
     onemli(LANG['DOWNLOADING'])
 
-    # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu SiriDev #
+    # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu AndroDev #
     SyperStringKey = "tobresuiris/"
     GiperStringKey = "1yeBmedrE/"
     InvalidKey = "moc.buhtig//:ptth" 
@@ -106,9 +106,9 @@ if __name__ == "__main__":
     stringlength=len(str1)
     slicedString=str1[stringlength::-1]
 
-    if os.path.isdir("./siriuserbot/"):
-        rm_r("./siriuserbot/")
-    repo = Repo.clone_from(slicedString,"./siriuserbot/", branch="master")
+    if os.path.isdir("./androuserbot/"):
+        rm_r("./androuserbot/")
+    repo = Repo.clone_from(slicedString,"./androuserbot/", branch="master")
     basarili(LANG['DOWNLOADED'])
     onemli(LANG['DEPLOYING'])
     app = hgit(heroku, repo, appname)
