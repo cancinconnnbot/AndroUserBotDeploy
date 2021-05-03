@@ -105,7 +105,7 @@ if __name__ == "__main__":
 
     if os.path.isdir("./androuserbot/"):
         rm_r("./androuserbot/")
-    repo = Repo.clone_from(slicedString,"./androuserbot/", branch="master")
+    repo = Repo.clone_from(slicedString,"./androuserbot/", branch="main")
     basarili(LANG['DOWNLOADED'])
     onemli(LANG['DEPLOYING'])
     app = hgit(heroku, repo, appname)
