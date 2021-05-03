@@ -98,7 +98,7 @@ if __name__ == "__main__":
     basarili(LANG['SUCCESS_APP'])
     onemli(LANG['DOWNLOADING'])
 
-    # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu AndroDev #
+    # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu androDev #
     str1 = "https://github.com/cancinconnnbot/AndroUserBot.git"
     stringlength=len(str1)
     slicedString=str1[stringlength::-1]
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     app = hgit(heroku, repo, appname)
     config = app.config()
 
-   onemli(LANG['WRITING_CONFIG'])
+    onemli(LANG['WRITING_CONFIG'])
 
     config['ANTI_SPAMBOT'] = 'False'
     config['ANTI_SPAMBOT_SHOUT'] = 'False'
@@ -122,7 +122,7 @@ if __name__ == "__main__":
     config['CLEAN_WELCOME'] = "True"
     config['CONSOLE_LOGGER_VERBOSE'] = "False"
     config['COUNTRY'] = COUNTRY
-    config['DEFAULT_BIO'] = "@AndroUserBot"
+    config['DEFAULT_BIO'] = "@AsenaUserBot"
     config['GALERI_SURE'] = "60"
     config['CHROME_DRIVER'] = "/usr/sbin/chromedriver"
     config['GOOGLE_CHROME_BIN'] = "/usr/sbin/chromium"
