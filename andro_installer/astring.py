@@ -44,7 +44,13 @@ class InteractiveTelegramClient(TelegramClient):
 
         if not loop.run_until_complete(self.is_user_authorized()):
             if telefon == None:
-               user_phone = soru(LANG['PHONE_NUMBER'])
+               hh = 0
+               while hh<1:
+                   user_phone = soru(LANG['PHONE_NUMBER'])
+                   if user_phone.startswith("+"):
+                       hh+=1
+                   else:
+                       hata(LANG['INVALID_FORMAT'])
             else:
                user_phone = telefon
             try:
@@ -74,7 +80,7 @@ class InteractiveTelegramClient(TelegramClient):
                      hata(LANG['INVALID_2FA'])
 
 def main():
-    bilgi(f"\[1] {LANG['NEW']}\n\[2] {LANG['OLD']}")
+    bilgi(f"[1] {LANG['NEW']}\n[2] {LANG['OLD']}")
             
     Sonuc = Prompt.ask(f"[bold yellow]{LANG['WHICH']}[/]", choices=["1", "2"], default="1")
 
@@ -108,26 +114,30 @@ def main():
         if soup.title.string == "Create new application":
             bilgi(LANG['NEW_APP'])
             hashh = soup.find("input", {"name": "hash"}).get("value")
-            app_title = soru("Uygulamanızın adı ne olsun? (Otomatik oluşturmak için boş bırakın): ")
+            app_title = soru("APPın adı ne olsun? (Otomatik oluşturmak için enter tuşuna basın): ")
             if app_title == '':
-                app_title = choice(["as", "ase", "asen", "madelineproto", "telethon", "pyrogram"]) + choice(["", "-", "+", " "]) + choice(["user", "bot", "vue", "jsx", "python", "php"]) + choice([str(randint(10000, 99999)), ""])
-            
-            app_shortname = soru("Uygulamanızın kısa adı ne olsun? (Otomatik oluşturmak için boş bırakın) \[5-32 karakter\]: ")
+                app_title = choice(["si", "sir", "tg", "madelineproto", "telethon", "pyrogram"]) + choice(["", "_"]) + choice(["user", "bt", "vue", "jsx", "python", "php", ""]) + choice([str(randint(1000, 99999))])
+            else:
+                if len(app_title) <6:
+                    app_title = choice(["si", "sir", "tg", "madelineproto", "telethon", "pyrogram"]) + choice(["", "_"]) + choice(["user", "bt", "vue", "jsx", "python", "php", ""]) + choice([str(randint(10000, 99999))])
+            app_shortname = soru("APPın kısa adı ne olsun? (Otomatik Oluşturmak için enter tuşuna basın) \[5-32 karakter\]: ")
             if app_shortname == '':
-                app_shortname = choice(["as", "ase", "asen", "madelineproto", "telethon", "pyrogram"]) + choice(["", "-", "+", " "]) + choice(["user", "bot", "vue", "jsx", "python", "php"]) + choice([str(randint(10000, 99999)), ""])
-            
+                app_shortname = choice(["si", "sir", "tg", "madelineproto", "telethon", "pyrogram"]) + choice(["", "_"]) + choice(["user", "bt", "vue", "jsx", "python", "php", ""]) + choice([str(randint(10000, 99999))])
+            else:
+                if len(app_shortname) <7:
+                    app_shortname = choice(["si", "sir", "tg", "madelineproto", "telethon", "pyrogram"]) + choice(["", "_"]) + choice(["user", "bt", "vue", "jsx", "python", "php", ""]) + choice([str(randint(10000, 99999))])
             AppInfo = {
                 "hash": hashh,
                 "app_title": app_title,
                 "app_shortname": app_shortname,
                 "app_url": "",
-                "app_platform": choice(["android", "ios", "web", "desktop"]),
+                "app_platform": choice(["ios", "web", "desktop"]),
                 "app_desc": choice(["madelineproto", "pyrogram", "telethon", "", "web", "cli"])
             }
             app = requests.post("https://my.telegram.org/apps/create", data=AppInfo, cookies=cookie).text
 
             if app == "ERROR":
-                hata("(!) Telegram otomatik açma işleminizi engellendi. Lütfen scripti yeniden başlatın.")
+                hata("(!) Telegram otomatik app açma işlemini blockladı. Scripti yeniden başladın./ Please restart!")
                 exit(1)
 
             bilgi(LANG['CREATED'])
@@ -162,5 +172,5 @@ def main():
             hata(LANG['ERROR'])
             exit(1)
     else:
-        hata("(!) Bilinmeyen seçim.")
+        hata("(!) Bilinmeyen bir seçim.")
         exit(1)
