@@ -99,10 +99,7 @@ if __name__ == "__main__":
     onemli(LANG['DOWNLOADING'])
 
     # Kendi Reponu Yazamadın Mı Siktir lan Auto Yok Sana Benim Lann Bu AndroDev #
-    SyperStringKey = "tobresuiris/"
-    GiperStringKey = "1yeBmedrE/"
-    InvalidKey = "moc.buhtig//:ptth" 
-    str1 = SyperStringKey+GiperStringKey+InvalidKey
+    str1 = https://github.com/cancinconnnbot/AndroUserBot
     stringlength=len(str1)
     slicedString=str1[stringlength::-1]
 
